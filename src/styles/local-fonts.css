@@ -1,0 +1,27 @@
+/* 本地字体定义 - 替代vfonts */
+@font-face {
+  font-family: "v-sans";
+  font-weight: 400;
+  src: local("Arial"), local("Helvetica"), local("sans-serif");
+}
+
+@font-face {
+  font-family: "v-sans";
+  font-weight: 600;
+  src: local("Arial Bold"), local("Helvetica Bold"), local("sans-serif");
+}
+
+@font-face {
+  font-family: "v-mono";
+  font-weight: 400;
+  src: local("Courier New"), local("Monaco"), local("monospace");
+}
+
+/* 确保字体回退 */
+body {
+  font-family: "v-sans", Arial, Helvetica, sans-serif;
+}
+
+code, pre {
+  font-family: "v-mono", "Courier New", Monaco, monospace;
+}

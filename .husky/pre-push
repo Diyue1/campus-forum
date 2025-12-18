@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🚀 运行 pre-push 检查..."
+
+# 1. 运行所有测试
+echo "\n🧪 运行所有测试..."
+npm run test:regression
+
+# 2. 检查构建
+echo "\n🔨 检查构建..."
+npm run build
+
+echo "\n✅ Pre-push 检查通过！可以推送代码。"

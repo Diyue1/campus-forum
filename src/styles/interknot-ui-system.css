@@ -1,0 +1,862 @@
+/* 绳网UI系统 - 绝区零（Zenless Zone Zero）赛博朋克风格 */
+:root {
+  /* 绝区零主色调 - 赛博朋克霓虹 */
+  --interknot-primary: #00F0FF;
+  --interknot-primary-hover: #33F3FF;
+  --interknot-primary-pressed: #00D4E6;
+  --interknot-primary-light: rgba(0, 240, 255, 0.15);
+  --interknot-primary-lighter: rgba(0, 240, 255, 0.08);
+  
+  /* 绝区零次要色 - 霓虹粉/紫 */
+  --interknot-secondary: #FF00FF;
+  --interknot-accent: #FFFF00;
+  --interknot-danger: #FF0066;
+  --interknot-success: #00FF88;
+  
+  /* 绝区零渐变色 - 赛博朋克霓虹渐变 */
+  --interknot-gradient-primary: linear-gradient(135deg, #00F0FF 0%, #FF00FF 100%);
+  --interknot-gradient-secondary: linear-gradient(45deg, #FF00FF, #FFFF00);
+  --interknot-gradient-cyber: linear-gradient(135deg, #00F0FF 0%, #0066FF 50%, #FF00FF 100%);
+  --interknot-gradient-bg: linear-gradient(180deg, #000000 0%, #0A0A14 50%, #000000 100%);
+  --interknot-gradient-neon: linear-gradient(90deg, #00F0FF, #FF00FF, #FFFF00, #00F0FF);
+  
+  /* 绝区零背景色 - 深邃赛博空间 */
+  --interknot-bg-primary: #000000;
+  --interknot-bg-secondary: #0A0A14;
+  --interknot-bg-card: rgba(10, 10, 20, 0.9);
+  --interknot-bg-overlay: rgba(0, 0, 0, 0.95);
+  --interknot-bg-glass: rgba(0, 240, 255, 0.05);
+  --interknot-bg-hologram: rgba(0, 240, 255, 0.1);
+  
+  /* 绳网文字颜色 */
+  --interknot-text-primary: #FFFFFF;
+  --interknot-text-secondary: rgba(255, 255, 255, 0.85);
+  --interknot-text-tertiary: rgba(255, 255, 255, 0.6);
+  --interknot-text-disabled: rgba(255, 255, 255, 0.4);
+  
+  /* 绳网边框颜色 */
+  --interknot-border-primary: rgba(255, 107, 53, 0.3);
+  --interknot-border-secondary: rgba(255, 255, 255, 0.1);
+  --interknot-border-hover: rgba(255, 107, 53, 0.5);
+  --interknot-border-active: rgba(255, 107, 53, 0.8);
+  
+  /* 绝区零阴影 - 霓虹发光效果 */
+  --interknot-shadow-sm: 0 2px 8px rgba(0, 240, 255, 0.3);
+  --interknot-shadow-md: 0 4px 16px rgba(0, 240, 255, 0.4);
+  --interknot-shadow-lg: 0 8px 32px rgba(0, 240, 255, 0.3);
+  --interknot-shadow-glow: 0 0 20px rgba(0, 240, 255, 0.6), 0 0 40px rgba(255, 0, 255, 0.3);
+  --interknot-shadow-neon: 0 0 10px rgba(0, 240, 255, 0.8), 0 0 20px rgba(0, 240, 255, 0.5), 0 0 30px rgba(0, 240, 255, 0.3);
+  --interknot-shadow-cyber: 0 0 5px #00F0FF, 0 0 10px #00F0FF, 0 0 20px #00F0FF, 0 0 40px #FF00FF;
+  
+  /* 绳网圆角 */
+  --interknot-radius-xs: 4px;
+  --interknot-radius-sm: 6px;
+  --interknot-radius-md: 8px;
+  --interknot-radius-lg: 12px;
+  --interknot-radius-xl: 16px;
+  
+  /* 绳网动画 */
+  --interknot-transition-fast: 0.15s ease;
+  --interknot-transition-normal: 0.25s ease;
+  --interknot-transition-slow: 0.4s ease;
+  
+  /* 绳网布局尺寸 */
+  --interknot-container-max-width: 1200px;
+  --interknot-card-width: 300px;
+  --interknot-card-height: 400px;
+  --interknot-image-height: 200px;
+  --interknot-header-height: 60px;
+  --interknot-sidebar-width: 240px;
+  
+  /* 绳网字体 */
+  --interknot-font-family: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif;
+  --interknot-font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+}
+
+/* 全局样式重置 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #000000;
+  background-image: 
+    linear-gradient(0deg, transparent 24%, rgba(0, 240, 255, 0.05) 25%, rgba(0, 240, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 240, 255, 0.05) 75%, rgba(0, 240, 255, 0.05) 76%, transparent 77%, transparent),
+    linear-gradient(90deg, transparent 24%, rgba(0, 240, 255, 0.05) 25%, rgba(0, 240, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 240, 255, 0.05) 75%, rgba(0, 240, 255, 0.05) 76%, transparent 77%, transparent);
+  background-size: 50px 50px;
+  background-attachment: fixed;
+  color: var(--interknot-text-primary);
+  font-family: var(--interknot-font-family);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+/* 赛博网格动画背景 */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(90deg, transparent 0%, rgba(0, 240, 255, 0.03) 50%, transparent 100%);
+  animation: cyber-scan 8s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes cyber-scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* 添加全局动画 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.6), 0 0 40px rgba(255, 0, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.8), 0 0 60px rgba(255, 0, 255, 0.5);
+  }
+}
+
+/* 绝区零故障艺术效果 */
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes neon-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+    text-shadow: 
+      0 0 5px #00F0FF,
+      0 0 10px #00F0FF,
+      0 0 20px #00F0FF,
+      0 0 40px #FF00FF;
+  }
+  20%, 24%, 55% {
+    opacity: 0.8;
+    text-shadow: none;
+  }
+}
+
+@keyframes data-stream {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+/* 绳网滚动条样式 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--interknot-gradient-primary);
+  border-radius: 3px;
+  transition: background var(--interknot-transition-fast);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--interknot-gradient-secondary);
+}
+
+/* 选中文本样式 */
+::selection {
+  background: rgba(0, 240, 255, 0.3);
+  color: var(--interknot-text-primary);
+  text-shadow: 0 0 5px #00F0FF;
+}
+
+/* 绳网UI组件样式 */
+.interknot-gradient-text {
+  background: var(--interknot-gradient-neon);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 600;
+  animation: gradient-shift 3s ease infinite;
+  filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.5));
+}
+
+.interknot-glow {
+  box-shadow: var(--interknot-shadow-glow);
+}
+
+.interknot-card {
+  background: var(--interknot-bg-card);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  border-radius: var(--interknot-radius-lg);
+  backdrop-filter: blur(20px);
+  transition: all var(--interknot-transition-normal);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
+}
+
+.interknot-card:hover {
+  border-color: rgba(0, 240, 255, 0.8);
+  box-shadow: var(--interknot-shadow-cyber);
+  transform: translateY(-4px);
+}
+
+/* 赛博朋克顶部霓虹线 */
+.interknot-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: var(--interknot-gradient-neon);
+  background-size: 200% 100%;
+  animation: neon-slide 3s linear infinite;
+  opacity: 0;
+  transition: opacity var(--interknot-transition-normal);
+}
+
+.interknot-card:hover::before {
+  opacity: 1;
+  left: 0;
+}
+
+@keyframes neon-slide {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 200% 0%;
+  }
+}
+
+/* 赛博网格背景 */
+.interknot-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(0deg, transparent 24%, rgba(0, 240, 255, 0.02) 25%, rgba(0, 240, 255, 0.02) 26%, transparent 27%),
+    linear-gradient(90deg, transparent 24%, rgba(0, 240, 255, 0.02) 25%, rgba(0, 240, 255, 0.02) 26%, transparent 27%);
+  background-size: 20px 20px;
+  opacity: 0;
+  transition: opacity var(--interknot-transition-normal);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.interknot-card:hover::after {
+  opacity: 1;
+}
+
+.interknot-button-primary {
+  background: var(--interknot-gradient-cyber);
+  border: 1px solid rgba(0, 240, 255, 0.5);
+  color: white;
+  font-weight: 600;
+  border-radius: var(--interknot-radius-md);
+  transition: all var(--interknot-transition-fast);
+  font-size: 14px;
+  padding: 10px 20px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.8);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+}
+
+.interknot-button-primary::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.interknot-button-primary:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.interknot-button-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--interknot-shadow-neon);
+  border-color: rgba(0, 240, 255, 1);
+}
+
+.interknot-button-primary:active {
+  transform: translateY(0);
+  animation: glitch 0.3s;
+}
+
+.interknot-button-secondary {
+  background: var(--interknot-bg-glass);
+  border: 1px solid var(--interknot-border-secondary);
+  color: var(--interknot-text-primary);
+  border-radius: var(--interknot-radius-md);
+  transition: all var(--interknot-transition-fast);
+  font-size: 14px;
+  padding: 10px 20px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+.interknot-button-secondary:hover {
+  border-color: var(--interknot-border-hover);
+  background: var(--interknot-primary-lighter);
+}
+
+.interknot-input {
+  background: var(--interknot-bg-glass);
+  border: 1px solid var(--interknot-border-secondary);
+  color: var(--interknot-text-primary);
+  border-radius: var(--interknot-radius-md);
+  padding: 12px 16px;
+  font-size: 14px;
+  transition: all var(--interknot-transition-fast);
+  backdrop-filter: blur(10px);
+}
+
+.interknot-input:focus {
+  outline: none;
+  border-color: var(--interknot-border-active);
+  box-shadow: var(--interknot-shadow-neon);
+}
+
+.interknot-input::placeholder {
+  color: var(--interknot-text-disabled);
+}
+
+/* 绳网网格布局 */
+.interknot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, var(--interknot-card-width));
+  gap: 8px;
+  justify-content: center;
+  padding: 12px;
+  max-width: var(--interknot-container-max-width);
+  margin: 0 auto;
+}
+
+/* 绳网动画效果 */
+@keyframes interknot-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes interknot-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(255, 107, 53, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.6);
+  }
+}
+
+@keyframes interknot-slide-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes interknot-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes interknot-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 动画工具类 */
+.interknot-animate-pulse {
+  animation: interknot-pulse 2s infinite;
+}
+
+.interknot-animate-glow {
+  animation: interknot-glow 2s ease-in-out infinite;
+}
+
+.interknot-animate-slide-in-up {
+  animation: interknot-slide-in-up 0.5s ease-out;
+}
+
+.interknot-animate-fade-in {
+  animation: interknot-fade-in 0.3s ease-out;
+}
+
+.interknot-animate-scale-in {
+  animation: interknot-scale-in 0.4s ease-out;
+}
+
+/* 绝区零特殊效果 */
+.interknot-neon-border {
+  border: 1px solid var(--interknot-primary);
+  box-shadow: 
+    0 0 10px rgba(0, 240, 255, 0.5),
+    0 0 20px rgba(0, 240, 255, 0.3),
+    inset 0 0 10px rgba(0, 240, 255, 0.1);
+  animation: neon-pulse 2s ease-in-out infinite;
+}
+
+@keyframes neon-pulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 10px rgba(0, 240, 255, 0.5),
+      0 0 20px rgba(0, 240, 255, 0.3),
+      inset 0 0 10px rgba(0, 240, 255, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 20px rgba(0, 240, 255, 0.8),
+      0 0 40px rgba(0, 240, 255, 0.5),
+      inset 0 0 20px rgba(0, 240, 255, 0.2);
+  }
+}
+
+.interknot-glass-effect {
+  background: var(--interknot-bg-glass);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--interknot-border-secondary);
+}
+
+.interknot-holographic {
+  background: linear-gradient(
+    45deg,
+    rgba(255, 107, 53, 0.1) 0%,
+    rgba(0, 188, 212, 0.1) 25%,
+    rgba(76, 175, 80, 0.1) 50%,
+    rgba(255, 152, 0, 0.1) 75%,
+    rgba(255, 107, 53, 0.1) 100%
+  );
+  background-size: 400% 400%;
+  animation: holographic-shift 3s ease-in-out infinite;
+}
+
+@keyframes holographic-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* 绝区零加载动画样式 */
+.zzz-loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+/* 赛博网格背景 */
+.zzz-loading-screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(0deg, transparent 24%, rgba(0, 240, 255, 0.1) 25%, rgba(0, 240, 255, 0.1) 26%, transparent 27%, transparent 74%, rgba(0, 240, 255, 0.1) 75%, rgba(0, 240, 255, 0.1) 76%, transparent 77%, transparent),
+    linear-gradient(90deg, transparent 24%, rgba(0, 240, 255, 0.1) 25%, rgba(0, 240, 255, 0.1) 26%, transparent 27%, transparent 74%, rgba(0, 240, 255, 0.1) 75%, rgba(0, 240, 255, 0.1) 76%, transparent 77%, transparent);
+  background-size: 50px 50px;
+  animation: grid-move 20s linear infinite;
+}
+
+@keyframes grid-move {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
+}
+
+/* 扫描线效果 */
+.zzz-loading-screen::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #00F0FF, transparent);
+  box-shadow: 0 0 20px #00F0FF;
+  animation: scan-line 2s linear infinite;
+}
+
+@keyframes scan-line {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.zzz-loading-content {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* 全息投影logo */
+.zzz-hologram-logo {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 40px;
+  position: relative;
+  animation: hologram-float 3s ease-in-out infinite;
+}
+
+@keyframes hologram-float {
+  0%, 100% {
+    transform: translateY(0) rotateY(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotateY(180deg);
+  }
+}
+
+.zzz-hologram-logo::before {
+  content: '绝区零';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  font-weight: 900;
+  background: var(--interknot-gradient-neon);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: neon-flicker 4s infinite, gradient-shift 3s ease infinite;
+  text-shadow: 0 0 30px rgba(0, 240, 255, 0.8);
+  filter: drop-shadow(0 0 20px #00F0FF);
+}
+
+/* 数据流效果 */
+.zzz-data-streams {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.zzz-data-stream {
+  position: absolute;
+  width: 2px;
+  height: 100px;
+  background: linear-gradient(180deg, transparent, #00F0FF, transparent);
+  animation: data-stream 3s linear infinite;
+  opacity: 0.6;
+}
+
+.zzz-data-stream:nth-child(1) { left: 10%; animation-delay: 0s; }
+.zzz-data-stream:nth-child(2) { left: 25%; animation-delay: 0.5s; }
+.zzz-data-stream:nth-child(3) { left: 40%; animation-delay: 1s; }
+.zzz-data-stream:nth-child(4) { left: 55%; animation-delay: 1.5s; }
+.zzz-data-stream:nth-child(5) { left: 70%; animation-delay: 2s; }
+.zzz-data-stream:nth-child(6) { left: 85%; animation-delay: 2.5s; }
+
+/* 加载文字 */
+.zzz-loading-text {
+  font-size: 24px;
+  font-weight: 700;
+  color: #00F0FF;
+  text-shadow: 0 0 10px #00F0FF, 0 0 20px #00F0FF, 0 0 30px #00F0FF;
+  margin-bottom: 30px;
+  animation: neon-flicker 3s infinite;
+  font-family: var(--interknot-font-mono);
+}
+
+/* 赛博进度条 */
+.zzz-progress-bar {
+  width: 400px;
+  height: 4px;
+  background: rgba(0, 240, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto 20px;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+}
+
+.zzz-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00F0FF, #FF00FF, #FFFF00, #00F0FF);
+  background-size: 200% 100%;
+  animation: progress-glow 2s linear infinite;
+  box-shadow: 0 0 20px #00F0FF;
+  transition: width 0.3s ease;
+}
+
+@keyframes progress-glow {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 200% 0%;
+  }
+}
+
+.zzz-progress-text {
+  font-size: 14px;
+  color: rgba(0, 240, 255, 0.8);
+  font-family: var(--interknot-font-mono);
+  letter-spacing: 2px;
+}
+
+/* 故障效果装饰 */
+.zzz-glitch-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 240, 255, 0.03) 0px,
+    transparent 1px,
+    transparent 2px,
+    rgba(0, 240, 255, 0.03) 3px
+  );
+  animation: glitch-lines 0.1s infinite;
+  pointer-events: none;
+}
+
+@keyframes glitch-lines {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(3px); }
+}
+
+/* 绝区零状态标识 */
+.interknot-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 4px 8px;
+  border-radius: var(--interknot-radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  z-index: 10;
+  border: 1px solid rgba(0, 240, 255, 0.5);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+}
+
+.interknot-badge.top {
+  background: rgba(0, 240, 255, 0.2);
+  border-color: #00F0FF;
+  color: #00F0FF;
+  text-shadow: 0 0 5px #00F0FF;
+}
+
+.interknot-badge.hot {
+  background: rgba(255, 0, 102, 0.2);
+  border-color: #FF0066;
+  color: #FF0066;
+  text-shadow: 0 0 5px #FF0066;
+}
+
+.interknot-badge.new {
+  background: rgba(0, 255, 136, 0.2);
+  border-color: #00FF88;
+  color: #00FF88;
+  text-shadow: 0 0 5px #00FF88;
+}
+
+/* 响应式断点 */
+@media (max-width: 1200px) {
+  :root {
+    --interknot-container-max-width: 100%;
+    --interknot-card-width: 280px;
+    --interknot-card-height: 380px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --interknot-radius-xs: 3px;
+    --interknot-radius-sm: 4px;
+    --interknot-radius-md: 6px;
+    --interknot-radius-lg: 8px;
+    --interknot-radius-xl: 10px;
+    --interknot-container-max-width: 100%;
+    --interknot-card-width: 160px;
+    --interknot-card-height: 220px;
+    --interknot-image-height: 120px;
+    --interknot-header-height: 50px;
+    --interknot-sidebar-width: 0px;
+  }
+  
+  .interknot-grid {
+    grid-template-columns: repeat(auto-fill, var(--interknot-card-width));
+    gap: 12px;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --interknot-card-width: 140px;
+    --interknot-card-height: 200px;
+    --interknot-image-height: 100px;
+  }
+  
+  .interknot-grid {
+    grid-template-columns: repeat(auto-fill, var(--interknot-card-width));
+    gap: 8px;
+    padding: 8px;
+  }
+}
+
+/* 深色模式优化 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --interknot-bg-primary: #0A0A0C;
+    --interknot-bg-secondary: #141418;
+  }
+}
+
+/* 高对比度模式 */
+@media (prefers-contrast: high) {
+  :root {
+    --interknot-border-primary: rgba(255, 107, 53, 0.5);
+    --interknot-border-hover: rgba(255, 107, 53, 0.8);
+  }
+}
+
+/* 减少动画模式 */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 打印样式 */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .interknot-card {
+    border: 1px solid #ccc;
+    background: white;
+  }
+}

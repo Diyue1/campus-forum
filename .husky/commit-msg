@@ -1,0 +1,35 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# 检查提交信息格式
+commit_msg_file=$1
+commit_msg=$(cat "$commit_msg_file")
+
+# 提交信息格式: <type>: <subject>
+# type: feat, fix, docs, style, refactor, test, chore
+pattern="^(feat|fix|docs|style|refactor|perf|test|chore)(\(.+\))?: .{1,50}"
+
+if ! echo "$commit_msg" | grep -qE "$pattern"; then
+  echo "❌ 提交信息格式错误！"
+  echo ""
+  echo "正确格式: <type>: <subject>"
+  echo ""
+  echo "类型 (type):"
+  echo "  feat:     新功能"
+  echo "  fix:      修复 bug"
+  echo "  docs:     文档更新"
+  echo "  style:    代码格式调整"
+  echo "  refactor: 代码重构"
+  echo "  perf:     性能优化"
+  echo "  test:     测试相关"
+  echo "  chore:    构建/工具相关"
+  echo ""
+  echo "示例:"
+  echo "  feat: 添加用户登录功能"
+  echo "  fix: 修复登录按钮点击无响应的问题"
+  echo "  docs: 更新 README 文档"
+  echo ""
+  exit 1
+fi
+
+echo "✅ 提交信息格式正确"

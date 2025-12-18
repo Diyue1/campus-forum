@@ -1,0 +1,12 @@
+node_modules
+dist
+coverage
+android
+playwright-report
+test-results
+reports
+*.config.ts
+*.config.js
+.eslintrc.cjs
+tests/setup.ts
+public
