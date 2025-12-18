@@ -246,7 +246,7 @@ import {
 // AI对话历史
 const conversationHistory = ref<Array<{role: string, content: string}>>([])
 
-const message = useMessage()
+const messageApi = useMessage()
 const userStore = useUserStore()
 const router = useRouter()
 
@@ -330,7 +330,7 @@ const sendMessage = async () => {
     scrollToBottom()
   })
 
-  message.success('消息发送成功')
+  messageApi.success('消息发送成功')
 
   // 如果是AI助手，自动回复
   if (otherUserId === -1) {
@@ -341,7 +341,7 @@ const sendMessage = async () => {
 // AI助手对话
 const chatWithAI = () => {
   if (!currentUser.value) {
-    message.error('请先登录')
+    messageApi.error('请先登录')
     return
   }
 
@@ -401,7 +401,7 @@ const getAIResponse = async (userMessage: string) => {
       scrollToBottom()
     })
   } catch (error) {
-    message.error('AI助手暂时无法回复，请稍后再试')
+    messageApi.error('AI助手暂时无法回复，请稍后再试')
   }
 }
 
@@ -592,7 +592,7 @@ const deleteMessage = (messageId: number) => {
   // 从数据库删除
   db.deleteMessage(messageId)
 
-  message.success('消息已删除')
+  messageApi.success('消息已删除')
 }
 
 const viewProfile = () => {
