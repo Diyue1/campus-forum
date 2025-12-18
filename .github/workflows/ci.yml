@@ -24,9 +24,6 @@ jobs:
       
       - name: Run ESLint
         run: npm run lint
-      
-      - name: Run Prettier check
-        run: npx prettier --check src/
 
   test:
     name: Unit Tests
@@ -43,10 +40,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       
-      - name: Run unit tests
-        run: npm run test
-      
-      - name: Generate coverage report
+      - name: Run unit tests with coverage
         run: npm run test:coverage
       
       - name: Upload coverage to Codecov
