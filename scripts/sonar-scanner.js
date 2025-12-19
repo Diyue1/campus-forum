@@ -4,8 +4,12 @@
  */
 
 /* eslint-disable @typescript-eslint/no-var-requires */
+import { createRequire } from 'node:module';
+import path from 'node:path';
+
+const require = createRequire(import.meta.url);
 const scanner = require('sonarqube-scanner');
-const path = require('path');
+const projectBaseDir = path.resolve(process.cwd());
 
 console.log('🔍 启动 SonarQube 代码分析...\n');
 
@@ -17,6 +21,7 @@ scanner(
       'sonar.projectKey': 'campus-forum',
       'sonar.projectName': '校园论坛',
       'sonar.projectVersion': '1.0.0',
+      'sonar.projectBaseDir': projectBaseDir,
       'sonar.sources': 'src',
       'sonar.tests': 'tests',
       'sonar.exclusions': '**/node_modules/**,**/dist/**,**/coverage/**',
