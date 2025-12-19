@@ -4,9 +4,12 @@
  */
 
 /* eslint-disable @typescript-eslint/no-var-requires */
-const { chromium } = require('@playwright/test');
-const fs = require('fs');
-const path = require('path');
+import { chromium } from '@playwright/test';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 async function measurePerformance(url) {
   console.log(`🔍 测试 URL: ${url}\n`);

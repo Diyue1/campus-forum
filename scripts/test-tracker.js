@@ -4,8 +4,11 @@
  */
 
 /* eslint-disable @typescript-eslint/no-var-requires, no-case-declarations */
-const fs = require('fs');
-const path = require('path');
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 class TestTracker {
   constructor() {

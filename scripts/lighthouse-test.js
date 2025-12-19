@@ -4,10 +4,15 @@
  */
 
 /* eslint-disable @typescript-eslint/no-var-requires */
+import { createRequire } from 'node:module';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const require = createRequire(import.meta.url);
 const lighthouse = require('lighthouse');
 const chromeLauncher = require('chrome-launcher');
-const fs = require('fs');
-const path = require('path');
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 async function runLighthouse() {
   console.log('🚀 启动 Lighthouse 性能测试...\n');
