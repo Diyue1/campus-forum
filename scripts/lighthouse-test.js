@@ -10,7 +10,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const require = createRequire(import.meta.url);
-const lighthouse = require('lighthouse');
+const lighthouseModule = require('lighthouse');
+const lighthouse = lighthouseModule.default || lighthouseModule;
 const chromeLauncher = require('chrome-launcher');
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
